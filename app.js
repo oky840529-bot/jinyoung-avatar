@@ -32,9 +32,8 @@ function initAppState() {
 
   // Load API Key: Check localStorage first, fallback to static config.js
   const savedApiKey = localStorage.getItem("GEMINI_API_KEY");
-  // Vercel 환경 변수(process.env)를 최우선으로 확인하고 없으면 기존 순서대로 작동하게 합니다. 
-  geminiApiKey = process.env.GEMINI_API_KEY || savedApiKey || CONFIG.GEMINI_API_KEY || "";
-
+// Vercel 환경변수 대신 브라우저 저장소(localStorage)와 config 기본값만 확인합니다.
+geminiApiKey = savedApiKey || CONFIG.GEMINI_API_KEY || "";
   // Render elements
   syncProfileUI();
   renderFaqListAdmin();
